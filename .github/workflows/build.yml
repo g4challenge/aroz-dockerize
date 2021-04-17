@@ -36,6 +36,7 @@ jobs:
               with:
                   push: true
                   no-cache: true
+                  context: app
                   tags: ${{ steps.vars.outputs.IMAGE_NAME }}:latest,${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.GITHUB_SHA_SHORT }}
 
             # - name: "Tag using version"
