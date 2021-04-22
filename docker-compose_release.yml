@@ -1,0 +1,12 @@
+version: "2"
+services:
+  app:
+    image: ghcr.io/g4challenge/arozos:latest
+    volumes:
+      - ./app/data/files:/arozos/src/files
+      - ./app/data/tmp:/arozos/src/tmp
+      - ./app/data/system:/arozos/src/system
+    ports:
+      - "8888:80"
+      - "2121:21"
+    restart: always
