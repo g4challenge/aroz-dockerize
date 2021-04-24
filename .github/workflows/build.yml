@@ -24,6 +24,7 @@ jobs:
                   echo "::set-output name=GITHUB_SHA_SHORT::$(echo ${GITHUB_SHA} | cut -c1-8)"
                   echo "::set-output name=IMAGE_NAME::$(echo "ghcr.io/${{ secrets.CR_USER }}/arozos")"
                   echo "::set-output name=TAG_NAME::$(curl --silent "https://api.github.com/repos/tobychui/arozos/releases/latest" | grep --color=never -Po '"tag_name": "\K.*?(?=")')"
+                  echo "::set-output name=BUILD_DATE::$(date -Iseconds)"
 
             - name: 'Login to github container registry'
               uses: docker/login-action@v1
@@ -40,6 +41,8 @@ jobs:
                   context: app
                   build-args: |
                       TAG=${{ steps.vars.outputs.TAG_NAME }}
+                      BUILD_DATE=${{ steps.vars.outputs.BUILD_DATE }}
+                      GITHUB_SHA_SHORT=${{ steps.vars.outputs.GITHUB_SHA_SHORT }}
                   tags: ${{ steps.vars.outputs.IMAGE_NAME }}:latest,${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.GITHUB_SHA_SHORT }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }}-${{ steps.vars.outputs.GITHUB_SHA_SHORT }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }}
 
             # - name: "Tag using version"
