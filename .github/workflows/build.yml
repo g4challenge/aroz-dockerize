@@ -40,7 +40,7 @@ jobs:
                   context: app
                   build-args: |
                       TAG=${{ steps.vars.outputs.TAG_NAME }}
-                  tags: ${{ steps.vars.outputs.IMAGE_NAME }}:latest,${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.GITHUB_SHA_SHORT }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }}-${{ steps.vars.outputs.GITHUB_SHA_SHORT }}
+                  tags: ${{ steps.vars.outputs.IMAGE_NAME }}:latest,${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.GITHUB_SHA_SHORT }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }}-${{ steps.vars.outputs.GITHUB_SHA_SHORT }},${{ steps.vars.outputs.IMAGE_NAME }}:${{ steps.vars.outputs.TAG_NAME }}
 
             # - name: "Tag using version"
             #  run: |
