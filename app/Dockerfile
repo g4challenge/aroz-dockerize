@@ -1,7 +1,7 @@
+FROM golang:1-alpine
 ARG TAG=v1.110
 ARG BUILD_DATE=now
 ARG GITHUB_SHA_SHORT=working-copy
-FROM golang:1-alpine
 LABEL \
       org.opencontainers.image.created=$BUILD_DATE \
       org.opencontainers.image.authors="gissehel" \
